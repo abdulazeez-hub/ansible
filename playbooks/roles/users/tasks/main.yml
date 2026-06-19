@@ -1,13 +1,13 @@
 ---
 - name: Create devops user
   user:
-    name: {{ username }}
+    name: "{{ username }}"
     shell: /bin/bash
     create_home: yes
     state: present
 
 - name: Add devops user to sudo group
   user:
-    name: {{ username }}
+    name: "{{ username }}"
     groups: sudo
     append: yes
