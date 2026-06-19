@@ -1,0 +1,21 @@
+---
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Start Nginx service
+  service:
+    name: nginx
+    state: started
+    enabled: true
+
+- name: Verify Nginx installation
+  command: nginx -v
+  register: nginx_version
+  changed_when: false
+  failed_when: false
+
+- name: Display Nginx version
+  debug:
+    var: nginx_version.stderr

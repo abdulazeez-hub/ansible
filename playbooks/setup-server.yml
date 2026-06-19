@@ -1,32 +1,9 @@
 ---
-- name: Configure Server
+- name: Configure EC2 Servers
   hosts: web
   become: true
 
-  tasks:
-
-    - name: Update package cache
-      apt:
-        update_cache: yes
-
-    - name: Install Docker
-      apt:
-        name: docker.io
-        state: present
-
-    - name: Start Docker
-      service:
-        name: docker
-        state: started
-        enabled: true
-
-    - name: Install Nginx
-      apt:
-        name: nginx
-        state: present
-
-    - name: Start Nginx
-      service:
-        name: nginx
-        state: started
-        enabled: true
+  roles:
+    - users
+    - docker
+    - nginx
