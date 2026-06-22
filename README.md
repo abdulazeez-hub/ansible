@@ -3,7 +3,7 @@
 ## Project structure
 
 ```
-ansib/
+ansible/
 ├── ansible.cfg
 ├── .gitignore
 ├── SECRET_ROTATION.md          # Rotation runbook + migration path
