@@ -1,0 +1,6 @@
+---
+env: dev
+username: devops
+
+devops_user_password: "{{ vault_devops_user_password }}"
+ansible_ssh_private_key_file: "{{ vault_ssh_private_key_file }}"

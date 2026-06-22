@@ -18,7 +18,9 @@
   command: docker --version
   register: docker_version
   changed_when: false
+  no_log: false
 
 - name: Display Docker version
   debug:
     var: docker_version.stdout
+  no_log: false

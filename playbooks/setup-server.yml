@@ -3,6 +3,8 @@
   hosts: web
   become: true
 
+  no_log: false
+
   vars:
     username: abdulazeez
 

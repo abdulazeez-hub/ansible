@@ -2,12 +2,26 @@
 - name: Create devops user
   user:
     name: "{{ username }}"
+    password: "{{ devops_user_password | password_hash('sha512') }}"
     shell: /bin/bash
     create_home: yes
     state: present
+  no_log: true  # Prevents the hashed password from appearing in logs
 
 - name: Add devops user to sudo group
   user:
     name: "{{ username }}"
     groups: sudo
     append: yes
+  no_log: true
+
+- name: Confirm user was created (safe to log — no secret values)
+  command: id {{ username }}
+  register: user_check
+  changed_when: false
+  no_log: false  # Explicitly safe — only prints uid/gid info
+
+- name: Display user info
+  debug:
+    var: user_check.stdout
+  no_log: false

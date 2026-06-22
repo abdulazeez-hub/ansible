@@ -15,7 +15,9 @@
   register: nginx_version
   changed_when: false
   failed_when: false
+  no_log: false
 
 - name: Display Nginx version
   debug:
     var: nginx_version.stderr
+  no_log: false
